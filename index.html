@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Udoh Knowledge - Portfolio</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3rem;
+        }
+        header p {
+            font-size: 1.2rem;
+        }
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .section p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .skills ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .skills li {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+        .skills li:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .project {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .project p {
+            font-size: 1rem;
+            color: #555;
+        }
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .form-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        .form-container input,
+        .form-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        .form-container input:focus,
+        .form-container textarea:focus {
+            border-color: #333;
+            outline: none;
+        }
+        .form-container button {
+            background-color: #333;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-container button:hover {
+            background-color: #555;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            /* padding: 20px; */
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        body.dark-mode header {
+            background-color: #222;
+        }
+        body.dark-mode .section h2 {
+            color: #fff;
+        }
+        body.dark-mode .section p {
+            color: #ccc;
+        }
+        body.dark-mode .skills li {
+            background: #333;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        }
+        body.dark-mode .skills li:hover {
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
+        }
+        body.dark-mode .projects .project {
+            background: #444;
+            color: #fff;
+        }
+        body.dark-mode .projects .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+        }
+        body.dark-mode .form-container {
+            background: #333;
+            color: #fff;
+        }
+        body.dark-mode footer {
+            background-color: #222;
+        }
+        .mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: background 0.3s ease;
+        }
+        .mode-toggle:hover {
+            background-color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .projects {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<button class="mode-toggle" onclick="toggleMode()">🌙</button>
+
+<header>
+    <h1>Udoh Knowledge</h1>
+    <p>Front-End Web Developer</p>
+</header>
+
+<div class="container">
+
+    <!-- Contact Information Section -->
+    <section class="section">
+        <h2>Contact Information</h2>
+        <p><strong>Address 1:</strong>Port-Harcourt,Ngeria/p>
+        <p><strong>Address 2:</strong>Abuja Nigeria</p> 
+        <p><strong>Phone:</strong> +2347037541754</p>
+        <p><strong>Email:</strong> <a href="mailto:Udohknowledge5@gmail.com">Udohknowledge5@gmail.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/knowledge-udoh-17b17a338?" target="_blank">View LinkedIn Profile</a></p>
+        
+    </section>
+
+    <!-- Professional Summary Section -->
+    <section class="section">
+        <h2>Professional Summary</h2>
+        <p>Aspiring and self-motivated front-end web developer with foundational skills in HTML, CSS, and JavaScript. Passionate about creating intuitive and responsive web designs, ensuring exceptional user experiences. Committed to learning and growing within the field, with a strong ability to adapt to new tools and technologies. Always eager to tackle challenges and apply creative solutions to real-world problems.</p>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section">
+        <h2>Education</h2>
+        <p><strong>FreeCodeCamp</strong></p>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>Responsive Web Design and Development</li>
+            <li>Version Control: Git and GitHub basics</li>
+            <li>Basic SEO Principles</li>
+            <li>Cross-Browser Compatibility Testing</li>
+            <li>UI/UX Design Principles</li>
+            <li>Problem-Solving and Debugging</li>
+        </ul>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section">
+        <h2>Experience</h2>
+        <p><strong>Freelance Front-End Web Developer</strong> - Remote <br> January 2024 – Present</p>
+        <ul>
+            <li>Developed multiple responsive websites for small businesses, improving user engagement and website performance.</li>
+            <li>Collaborated with clients to understand their needs, providing design and development solutions that match their vision.</li>
+            <li>Integrated third-party tools and APIs to enhance website functionality.</li>
+        </ul>
+        
+        <p><strong>Web Developer Intern</strong> - [Company Name] <br> June 2024 – August 2024</p>
+        <ul>
+            <li>Assisted senior developers in building and maintaining responsive websites for various clients.</li>
+            <li>Participated in code reviews and collaborated on improving front-end performance.</li>
+            <li>Contributed to several small web development projects, learning industry-standard tools and techniques.</li>
+        </ul>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Personal Portfolio Website</h3>
+            <p>Designed and developed a fully responsive personal portfolio website showcasing projects and skills using HTML, CSS, and JavaScript.</p>
+        </div>
+        <div class="project">
+            <h3>Interactive Quiz Application</h3>
+            <p>Built a dynamic and interactive quiz application using JavaScript for user engagement.</p>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="section">
+        <h2>Certifications</h2>
+        <p><strong>Responsive Web Design Certification</strong> | FreeCodeCamp.org | November 2024</p>
+        <p>Mastered 300+ hours of training in HTML, CSS, Flexbox, Grid, and responsive design principles. <a href="https://freecodecamp.org/certification/UDOH123/responsive-web-design" target="_blank">View Certificate</a></p>
+        
+        <p><strong>Front-End Development Libraries Certification</strong> | FreeCodeCamp.org | September 2024 – December 2024</p>
+        <p>Completed 300+ hours of coursework on front-end libraries such as React.js, Redux, Bootstrap, jQuery, and Sass. <a href="https://freecodecamp.org/certification/UDOH123/front-end-development-libraries" target="_blank">View Certificate</a></p>
+    </section>
+
+    <!-- Interests Section -->
+    <section class="section">
+        <h2>Interests</h2>
+        <ul>
+            <li>Web Development Trends</li>
+            <li>UI/UX Design</li>
+            <li>Continuous Learning in Front-End Technologies</li>
+            <li>Open-Source Contributions</li>
+        </ul>
+    </section>
+
+    <!-- Languages Section -->
+    <section class="section">
+        <h2>Languages</h2>
+        <p><strong>English:</strong> Fluent</p>
+        <p><strong>Igbo:</strong> Native</p>
+    </section>
+
+    <!-- Contact Form Section -->
+    <!-- <section class="section form-container">
+        <h2>Contact Me</h2>
+        <form action="your-form-submission-url" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="company" placeholder="Company (optional)">
+            <textarea name="message" placeholder="What do you need help with?" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section> -->
+    <section class="section form-container">
+        <h2>Contact Me</h2>
+        <form action="mailto:Udohknowledge5@gmail.com?subject=Portfolio Contact Form Submission" method="POST" enctype="multipart/form-data">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="text" name="company" placeholder="Company (optional)">
+            <textarea name="message" placeholder="What do you need help with?" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+</div>
+
+<footer>
+    <p>&copy; 2024 Udoh Knowledge | <a href="mailto:Udohknowledge5@gmail.com">Email Me</a></p>
+</footer>
+
+<script>
+    function toggleMode() {
+        document.body.classList.toggle('dark-mode');
+        const modeIcon = document.querySelector('.mode-toggle');
+        modeIcon.textContent = document.body.classList.contains('dark-mode') ? '🌞' : '🌙';
+    }
+</script>
+
+</body>
+</html>
